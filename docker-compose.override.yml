@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+
+  collector:
+    image: aqualtune/netflow_collector:latest
+    depends_on:
+     - db
+     - wordpress
+    networks:
+      backend:
+       ipv4_address: "${COLLECTOR_IP}"
+ 
+  probea:
+    image: aqualtune/netflow_data_export:latest
+    depends_on:
+      - collector
+    environment:
+      FLOW_COLLECTOR: "${COLLECTOR_IP}"
+      COLLECTOR_PORT: "2055"
+      INTERFACE: eth0
+    network_mode: service:wordpress
+
+  probeb:
+    image: aqualtune/netflow_data_export:latest
+    depends_on:
+      - collector 
+    environment: 
+      FLOW_COLLECTOR: "${COLLECTOR_IP}"
+      COLLECTOR_PORT: "2055"
+      INTERFACE: eth0
+    network_mode: service:db
+
+networks:
+  backend:
+    ipam:
+      driver: default
+      config:
+        - subnet: "${SUBNET}" 
