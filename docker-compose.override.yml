@@ -19,6 +19,7 @@ services:
       FLOW_COLLECTOR: "${COLLECTOR_IP}"
       COLLECTOR_PORT: "2055"
       INTERFACE: eth0
+    tty: true  
     network_mode: service:wordpress
 
   probeb:
@@ -29,6 +30,7 @@ services:
       FLOW_COLLECTOR: "${COLLECTOR_IP}"
       COLLECTOR_PORT: "2055"
       INTERFACE: eth0
+    tty: true
     network_mode: service:db
 
 networks:
