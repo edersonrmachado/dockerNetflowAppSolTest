@@ -1,7 +1,7 @@
 #### RUN TESTS
 #### 1. DOWNLOAD GIT FILES FROM GITHUB
 ```
-sudo git clone https://github.com/edersonrmachado/dockerNetflowTest.git
+sudo git clone https://github.com/edersonrmachado/dockerNetflowAppSolTest.git
 cd dockerNetflowAppSolTest
 ```
 #### 2. PERMISSIONS TO FILES BE EXECUTABLES
